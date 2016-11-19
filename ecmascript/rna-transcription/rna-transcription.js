@@ -13,9 +13,7 @@ class Transcriptor {
 					str1 += 'A'; break;		
 			}
 		}
-
 		return str1;
-
 	}
 }
 
