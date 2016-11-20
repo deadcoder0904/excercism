@@ -1,18 +1,23 @@
 class Triangle {
-	constructor(x,y,z) {
-		this._x = x;
-		this._y = y;
-		this._z = z;
+	constructor(...sides) {
+		this.sides = sides.sort((a,b) => a-b);
 	}
 
 	kind() {
-		let x = this._x, y = this._y, z = this._z;
-		if(x <= 0 || y <= 0 || z <= 0 || z > x + y || x > y + z || y > x + z)
-			throw new Error("Hell yeah");
-		if(x == y && y == z)
+		let [x,y,z] = this.sides;
+		
+		if(z > x + y)	
+			throw new Error("triangle inequality");
+		
+		if(x <= 0) 
+			throw new Error("non-positive side");
+		
+		if(x == y && y ==z) 
 			return "equilateral";
+		
 		if(x == y || y == z || x == z)
-			return "isosceles";
+					return "isosceles";
+		
 		return "scalene";
 	}
 }
